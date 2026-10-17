@@ -1,12 +1,8 @@
 const container = document.getElementById("container");
 const newGridButton = document.getElementById("new-grid-button");
 
-function getRandomColor() {
-  const red = Math.floor(Math.random() * 256);
-  const green = Math.floor(Math.random() * 256);
-  const blue = Math.floor(Math.random() * 256);
-
-  return "rgb(" + red + ", " + green + ", " + blue + ")";
+function getRandomValue() {
+  return Math.floor(Math.random() * 256);
 }
 
 function createGrid(squaresPerSide) {
@@ -17,8 +13,24 @@ function createGrid(squaresPerSide) {
     square.classList.add("square");
     square.style.width = 100 / squaresPerSide + "%";
 
+    let red;
+    let green;
+    let blue;
+    let passes = 0;
+
     square.addEventListener("mouseenter", () => {
-      square.style.backgroundColor = getRandomColor();
+      if (passes === 0) {
+        red = getRandomValue();
+        green = getRandomValue();
+        blue = getRandomValue();
+      }
+
+      if (passes < 10) {
+        passes = passes + 1;
+      }
+
+      square.style.backgroundColor =
+        "rgba(" + red + ", " + green + ", " + blue + ", " + passes / 10 + ")";
     });
 
     container.appendChild(square);
