@@ -1,6 +1,14 @@
 const container = document.getElementById("container");
 const newGridButton = document.getElementById("new-grid-button");
 
+function getRandomColor() {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+
+  return "rgb(" + red + ", " + green + ", " + blue + ")";
+}
+
 function createGrid(squaresPerSide) {
   const totalSquares = squaresPerSide * squaresPerSide;
 
@@ -10,7 +18,7 @@ function createGrid(squaresPerSide) {
     square.style.width = 100 / squaresPerSide + "%";
 
     square.addEventListener("mouseenter", () => {
-      square.classList.add("painted");
+      square.style.backgroundColor = getRandomColor();
     });
 
     container.appendChild(square);
