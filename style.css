@@ -11,3 +11,7 @@
   height: 60px;
   border: 1px solid #cccccc;
 }
+
+.square.painted {
+  background-color: #ff0000;
+}
